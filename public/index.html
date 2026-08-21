@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>تلگسبز</title>
+<style>
+:root{--green:#229b69;--green2:#d8f4e5;--bg:#dfeae4;--panel:#fff;--muted:#829089;--line:#e8eeeb}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:#17231d}
+button,input{font:inherit}.hidden{display:none!important}
+.auth{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#dff4e9,#f8fbf9);padding:20px}.card{width:min(430px,100%);background:#fff;padding:30px;border-radius:26px;box-shadow:0 20px 55px #173b2a22}.logo{width:76px;height:76px;border-radius:25px;background:var(--green);color:#fff;display:grid;place-items:center;margin:auto;font-size:40px;font-weight:bold}.card h1{text-align:center;margin:12px 0 6px}.card p{text-align:center;color:var(--muted)}label{display:block;font-size:13px;margin:14px 0 6px}input{width:100%;padding:13px 15px;border:1px solid #dce5e0;border-radius:13px;outline:0}.primary{width:100%;border:0;background:var(--green);color:#fff;padding:14px;border-radius:13px;margin-top:18px;font-weight:bold;cursor:pointer}
+.app{height:100vh;display:flex;overflow:hidden}.sidebar{width:370px;background:#fff;border-left:1px solid #d5dfda;display:flex;flex-direction:column}.head{height:70px;background:var(--green);color:#fff;display:flex;align-items:center;padding:10px 15px;gap:10px}.brandLogo{width:43px;height:43px;background:#fff;color:var(--green);border-radius:50%;display:grid;place-items:center;font-weight:bold}.head b{font-size:19px}.head small{display:block;opacity:.85;margin-top:3px}.iconBtn{border:0;background:transparent;color:inherit;font-size:22px;cursor:pointer;margin-right:auto}
+.search{padding:11px;background:#f5f8f6}.search input{background:#eaf0ed;border:0;border-radius:12px}.tabs{display:flex;background:#fff;border-bottom:1px solid var(--line)}.tab{flex:1;padding:11px;border:0;background:white;color:#7b8781;cursor:pointer}.tab.active{color:var(--green);border-bottom:2px solid var(--green);font-weight:bold}
+.list{overflow:auto;flex:1}.chat,.contact{display:flex;gap:12px;padding:13px 15px;border-bottom:1px solid #f0f3f1;cursor:pointer}.chat:hover,.chat.active,.contact:hover{background:#e9f6ef}.ava{width:50px;height:50px;border-radius:50%;background:#73b79c;color:white;display:grid;place-items:center;font-weight:bold;flex:none;overflow:hidden}.ava img{width:100%;height:100%;object-fit:cover}.ci{min-width:0;flex:1}.row{display:flex;justify-content:space-between;gap:8px}.preview{font-size:12px;color:var(--muted);margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.time{font-size:10px;color:#9aa59f}.badge{background:var(--green);color:#fff;min-width:19px;height:19px;padding:0 5px;border-radius:10px;font-size:10px;display:inline-grid;place-items:center;margin-right:4px}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}.top{height:70px;background:#fff;display:flex;align-items:center;padding:9px 17px;gap:11px;border-bottom:1px solid var(--line)}.top b{font-size:15px}.online{font-size:11px;color:var(--green);margin-top:4px}.back{display:none;border:0;background:none;font-size:25px;color:var(--green)}
+.msgs{flex:1;overflow:auto;padding:25px 8%;display:flex;flex-direction:column;gap:7px;background:var(--bg);background-image:radial-gradient(#ffffff66 1px,transparent 1px);background-size:18px 18px}.bubble{position:relative;max-width:66%;padding:8px 11px 6px;background:#fff;border-radius:14px;align-self:flex-start;box-shadow:0 1px 2px #0001}.bubble.me{align-self:flex-end;background:var(--green2)}.bubble .meta{text-align:left;color:#839089;font-size:9px;margin-top:5px;display:flex;align-items:center;justify-content:flex-end;gap:3px}.ticks{color:#168e60;font-weight:bold}.msgMenu{position:absolute;left:5px;top:100%;z-index:5;background:white;border:1px solid #ddd;border-radius:9px;padding:5px;box-shadow:0 5px 18px #0002}.msgMenu button{border:0;background:white;padding:7px 12px;color:#d54a4a;cursor:pointer}
+.composer{background:#fff;padding:10px 14px;display:flex;gap:8px}.composer input{background:#f0f4f2;border:0;border-radius:24px}.send{width:48px;height:48px;border:0;border-radius:50%;background:var(--green);color:white;cursor:pointer}
+.toast{position:fixed;bottom:75px;right:50%;transform:translateX(50%);background:#222;color:#fff;padding:10px 16px;border-radius:18px;font-size:12px;z-index:50;opacity:0;transition:.25s}.toast.show{opacity:1}
+.profile{padding:18px;text-align:center}.profile .big{width:90px;height:90px;margin:auto;border-radius:50%;overflow:hidden;background:#73b79c;color:white;display:grid;place-items:center;font-size:32px;font-weight:bold}.profile h3{margin:10px 0 4px}.profile small{color:var(--muted)}.profile input{margin-top:15px}.danger{border:0;background:#fff0f0;color:#c34b4b;padding:11px;border-radius:11px;width:100%;margin-top:10px;cursor:pointer}
+@media(max-width:720px){.sidebar{width:100%}.main{display:none}.app.open .sidebar{display:none}.app.open .main{display:flex;width:100%}.back{display:block}}
+</style>
+</head>
+<body>
+<div id="auth" class="auth"><div class="card"><div class="logo">ت</div><h1>تلگسبز</h1><p>پیام‌رسان سبز و ساده</p>
+<label>نام</label><input id="name" placeholder="مثلاً مریم">
+<label>شماره موبایل</label><input id="phone" inputmode="tel" placeholder="0912...">
+<button class="primary" onclick="register()">ثبت‌نام / ورود</button></div></div>
+
+<div id="app" class="app hidden">
+<aside class="sidebar">
+ <div class="head"><div class="brandLogo">ت</div><div><b>تلگسبز</b><small id="myName">حساب من</small></div><button class="iconBtn" onclick="showProfile()">☰</button></div>
+ <div class="search"><input id="search" placeholder="جستجوی مخاطب..." oninput="loadUsers(this.value)"></div>
+ <div class="tabs"><button class="tab active" id="chTab" onclick="switchTab('chats')">گفتگوها</button><button class="tab" id="coTab" onclick="switchTab('contacts')">مخاطبین</button></div>
+ <div id="list" class="list"></div>
+</aside>
+<main class="main">
+ <header class="top"><button class="back" onclick="$('app').classList.remove('open')">‹</button><div class="ava" id="topA">ت</div><div><b id="title">یک مخاطب را انتخاب کنید</b><div class="online" id="status"></div></div></header>
+ <section id="msgs" class="msgs"></section>
+ <div class="composer"><input id="text" placeholder="پیام بنویسید..." onkeydown="if(event.key==='Enter')send()"><button class="send" onclick="send()">➤</button></div>
+</main>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+let me=JSON.parse(localStorage.getItem("telgsabz_me")||"null"),peer=null,ws=null,activeTab="chats",cacheUsers=[],unread={};
+
+function toast(t){$("toast").textContent=t;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2200)}
+async function register(){let name=$("name").value.trim(),phone=$("phone").value.replace(/\D/g,"");if(name.length<2||phone.length<8)return toast("نام و شماره را درست وارد کنید");let r=await fetch("/api/register",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,phone})});let x=await r.json();if(!r.ok)return toast(x.error||"خطا");me=x.user;localStorage.setItem("telgsabz_me",JSON.stringify(me));start()}
+function start(){$("auth").classList.add("hidden");$("app").classList.remove("hidden");$("myName").textContent=me.name;connect();loadUsers("")}
+function connect(){let p=location.protocol==="https:"?"wss":"ws";ws=new WebSocket(p+"://"+location.host);ws.onopen=()=>ws.send(JSON.stringify({type:"login",user:me.id}));ws.onclose=()=>setTimeout(connect,2000);ws.onmessage=e=>{let d=JSON.parse(e.data);if(d.type==="message"){let m=d.message;if(peer&&((m.from===me.id&&m.to===peer.id)||(m.from===peer.id&&m.to===me.id)))draw(m);else if(m.from!==me.id){unread[m.from]=(unread[m.from]||0)+1;renderUsers();toast("💬 پیام جدید از "+nameOf(m.from));if(Notification.permission==="granted")new Notification("تلگسبز",{body:"پیام جدید دریافت شد"})}}}}
+function nameOf(id){let u=cacheUsers.find(x=>x.id===id);return u?u.name:"یک مخاطب"}
+async function loadUsers(q){let r=await fetch("/api/users?q="+encodeURIComponent(q)),u=await r.json();cacheUsers=u.filter(x=>x.id!==me.id);renderUsers()}
+function renderUsers(){let arr=cacheUsers;let search=$("search").value.toLowerCase();arr=arr.filter(x=>x.name.toLowerCase().includes(search)||x.phone.includes(search));$("list").innerHTML=arr.map(u=>`<div class="contact ${peer&&peer.id===u.id?'active':''}" onclick='openPeer(${JSON.stringify(u)})'><div class="ava">${esc(u.name[0])}</div><div class="ci"><div class="row"><b>${esc(u.name)}</b><span>${unread[u.id]?`<span class="badge">${unread[u.id]}</span>`:""}</span></div><div class="preview">${esc(u.phone)}</div></div></div>`).join("")}
+function switchTab(t){activeTab=t;$("chTab").classList.toggle("active",t==="chats");$("coTab").classList.toggle("active",t==="contacts");renderUsers()}
+async function openPeer(u){peer=u;unread[u.id]=0;renderUsers();$("app").classList.add("open");$("title").textContent=u.name;$("topA").textContent=u.name[0];$("status").textContent="آنلاین";$("msgs").innerHTML="";try{let r=await fetch(`/api/messages?a=${encodeURIComponent(me.id)}&b=${encodeURIComponent(u.id)}`);for(let m of await r.json())draw(m)}catch{}if("Notification" in window&&Notification.permission==="default")Notification.requestPermission()}
+function draw(m){let d=document.createElement("div");d.className="bubble "+(m.from===me.id?"me":"");d.dataset.id=m.id;let menu=m.from===me.id?`<div class="msgMenu hidden"><button onclick="deleteLocal(this)">حذف پیام</button></div>`:"";d.innerHTML=esc(m.text)+`<div class="meta">${new Date(m.time).toLocaleTimeString("fa-IR",{hour:"2-digit",minute:"2-digit"})}${m.from===me.id?'<span class="ticks">✓✓</span>':''}</div>${menu}`;d.ondblclick=()=>d.querySelector(".msgMenu")?.classList.toggle("hidden");$("msgs").appendChild(d);$("msgs").scrollTop=999999}
+function deleteLocal(btn){let b=btn.closest(".bubble");b.remove();toast("پیام از این نمایش حذف شد")}
+function send(){let t=$("text").value.trim();if(!peer||!t||!ws||ws.readyState!==1)return;if(t.length>2000)return toast("پیام خیلی طولانی است");ws.send(JSON.stringify({type:"message",to:peer.id,text:t}));$("text").value=""}
+function showProfile(){let n=prompt("نام نمایشی شما:",me.name);if(n&&n.trim()){me.name=n.trim();localStorage.setItem("telgsabz_me",JSON.stringify(me));$("myName").textContent=me.name;toast("نام تغییر کرد")}}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+if(me)start();
+</script></body></html>
