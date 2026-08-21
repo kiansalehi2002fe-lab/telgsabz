@@ -1,0 +1,14 @@
+{
+  "name": "telgsabz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "تلگسبز - پیام‌رسان دو نفره با WebSocket",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}
