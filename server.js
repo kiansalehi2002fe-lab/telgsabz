@@ -6,7 +6,11 @@ const path = require("path");
 
 const app = express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname,"public")));\napp.get("/health",(req,res)=>res.json({ok:true,service:"telgsabz"}));
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/health", (req, res) => {
+  res.json({ ok: true, service: "telgsabz" });
+});
 
 const server = http.createServer(app);
 const wss = new WebSocket.Server({server});
